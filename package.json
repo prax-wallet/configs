@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/prax-wallet/configs#readme",
   "devDependencies": {
-    "configs": "github:prax-wallet/configs"
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",

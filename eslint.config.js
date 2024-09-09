@@ -1,9 +1,6 @@
-// @ts-check
-
-import {createRequire} from 'node:module';
 // @ts-expect-error https://github.com/eslint-community/eslint-plugin-eslint-comments/issues/214
 import ESLintPluginESLintCommentsConfigs from '@eslint-community/eslint-plugin-eslint-comments/configs';
-import {fixupPluginRules} from '@eslint/compat';
+import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import * as import_ from 'eslint-plugin-import';
 import prettier from 'eslint-config-prettier';
@@ -11,7 +8,6 @@ import react from 'eslint-plugin-react';
 import react_hooks from 'eslint-plugin-react-hooks';
 import react_refresh from 'eslint-plugin-react-refresh';
 import storybook from 'eslint-plugin-storybook';
-import tailwindcss from 'eslint-plugin-tailwindcss';
 import turbo from 'eslint-plugin-turbo';
 import vitest from 'eslint-plugin-vitest';
 import tseslint from 'typescript-eslint';
@@ -53,7 +49,7 @@ export default tseslint.config(
   ...tseslint.configs.stylisticTypeChecked,
   {
     name: 'custom:languageOptions-parserOptions-project-true',
-    languageOptions: {parser: tseslint.parser, parserOptions: {project: true}},
+    languageOptions: { parser: tseslint.parser, parserOptions: { project: true } },
   },
 
   {
@@ -62,26 +58,13 @@ export default tseslint.config(
       '@eslint-community/eslint-comments': ESLintPluginESLintComments,
     },
     rules: {
-      '@eslint-community/eslint-comments/require-description': ['error', {ignore: []}],
+      '@eslint-community/eslint-comments/require-description': ['error', { ignore: [] }],
     },
   },
 
-  // // tailwind config
-  // {
-  //   name: 'custom:tailwindcss-config',
-  //   plugins: {tailwindcss},
-  //   settings: {
-  //     tailwindcss: {config: createRequire(import.meta.url).resolve('@repo/tailwind-config')},
-  //   },
-  //   rules: {
-  //     ...tailwindcss.configs.recommended.rules,
-  //     'tailwindcss/no-custom-classname': ['error', {callees: ['cn', 'cva']}],
-  //   },
-  // },
-
   {
     name: 'custom:react-plugins',
-    languageOptions: {parserOptions: {ecmafeatures: {jsx: true}}},
+    languageOptions: { parserOptions: { ecmafeatures: { jsx: true } } },
     plugins: {
       // @ts-expect-error - react is incorrectly typed
       react: fixupPluginRules(react),
@@ -107,12 +90,12 @@ export default tseslint.config(
 
   {
     name: 'custom:import-enabled',
-    plugins: {import: fixupPluginRules(import_)},
-    settings: {'import/resolver': {typescript: true}},
+    plugins: { import: fixupPluginRules(import_) },
+    settings: { 'import/resolver': { typescript: true } },
     rules: {
       // be aware this rule doesn't always provide correct fixes. its bad fixes
       // will fail to compile, and are easy to correct manually.
-      'import/no-duplicates': ['error', {'prefer-inline': true}],
+      'import/no-duplicates': ['error', { 'prefer-inline': true }],
 
       // import plugin rules
       'import/first': 'error',
@@ -127,22 +110,22 @@ export default tseslint.config(
       'sort-imports': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
-        {prefer: 'type-imports', fixStyle: 'inline-type-imports'},
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
       'import/order': [
         'error',
         {
           pathGroups: [
-            {pattern: '@penumbra-zone/**', group: 'internal', position: 'before'},
-            {pattern: '@repo/**', group: 'internal', position: 'after'},
+            { pattern: '@penumbra-zone/**', group: 'internal', position: 'before' },
+            { pattern: '@repo/**', group: 'internal', position: 'after' },
 
-            {pattern: '@buf/**', group: 'external', position: 'after'},
-            {pattern: '@penumbra-labs/**', group: 'external', position: 'after'},
+            { pattern: '@buf/**', group: 'external', position: 'after' },
+            { pattern: '@penumbra-labs/**', group: 'external', position: 'after' },
           ],
           pathGroupsExcludedImportTypes: [],
           distinctGroup: true,
           'newlines-between': 'always',
-          alphabetize: {order: 'asc'},
+          alphabetize: { order: 'asc' },
         },
       ],
     },
@@ -160,15 +143,15 @@ export default tseslint.config(
   {
     name: 'custom:enabled-everywhere',
     rules: {
-      '@typescript-eslint/no-confusing-void-expression': ['error', {ignoreArrowShorthand: true}],
+      '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
       '@typescript-eslint/no-unnecessary-condition': [
         'error',
-        {allowConstantLoopConditions: true},
+        { allowConstantLoopConditions: true },
       ],
-      '@typescript-eslint/restrict-template-expressions': ['error', {allowNumber: true}],
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@typescript-eslint/switch-exhaustiveness-check': [
         'error',
-        {requireDefaultForNonUnion: true},
+        { requireDefaultForNonUnion: true },
       ],
       eqeqeq: ['error', 'smart'],
     },
@@ -205,29 +188,29 @@ export default tseslint.config(
     name: 'custom:eslint-wishlist-improvements',
     rules: {
       'no-bitwise': 'error',
-      'no-console': ['error', {allow: ['warn', 'error', 'debug']}],
+      'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
       'no-nested-ternary': 'warn',
       'no-param-reassign': 'error',
-      'no-promise-executor-return': ['error', {allowVoid: true}],
+      'no-promise-executor-return': ['error', { allowVoid: true }],
       'no-restricted-globals': [
         'error',
-        {message: 'Use `globalThis` instead.', name: 'global'},
-        {message: 'Use `globalThis` instead.', name: 'self'},
+        { message: 'Use `globalThis` instead.', name: 'global' },
+        { message: 'Use `globalThis` instead.', name: 'self' },
       ],
-      'no-self-assign': ['error', {props: true}],
+      'no-self-assign': ['error', { props: true }],
       'no-template-curly-in-string': 'warn',
       'no-unreachable-loop': 'warn',
       'no-warning-comments': 'off',
-      'prefer-regex-literals': ['error', {disallowRedundantWrapping: true}],
-      'spaced-comment': ['error', 'always', {markers: ['/']}],
+      'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+      'spaced-comment': ['error', 'always', { markers: ['/'] }],
     },
   },
 
   // turbo config
   {
     name: 'custom:turbo-config',
-    plugins: {turbo},
-    rules: {'turbo/no-undeclared-env-vars': 'error'},
+    plugins: { turbo },
+    rules: { 'turbo/no-undeclared-env-vars': 'error' },
   },
 
   // test rules
@@ -265,13 +248,13 @@ export default tseslint.config(
   },
 
   // disable typed linting for non-ts files
-  {ignores: ['**/*.@(ts|tsx)'], ...tseslint.configs.disableTypeChecked},
+  { ignores: ['**/*.@(ts|tsx)'], ...tseslint.configs.disableTypeChecked },
 
   // disable rules covered by prettier
   prettier,
 
   {
     name: 'custom:prettier-would-disable',
-    rules: {curly: ['error', 'all']},
+    rules: { curly: ['error', 'all'] },
   },
 );
