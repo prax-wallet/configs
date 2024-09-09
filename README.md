@@ -1,8 +1,6 @@
 # Prax Wallet Configs
 
-This repo contains all the configs that are shared across the Prax ecosystem. Supported configs:
-- ESLint
-- Prettier
+This repo contains all the configs that are shared across the Prax ecosystem. 
 
 ## Consuming this repo
 
@@ -12,7 +10,7 @@ This repo contains all the configs that are shared across the Prax ecosystem. Su
 pnpm add prax-wallet/configs#main
 ```
 
-This will keep the configs up to date by always pulling from master
+This will keep the configs up to date by always pulling from main.
 
 2. Extend the relevant config
 
@@ -22,7 +20,7 @@ In your `eslint.config.js`:
 import eslintConfig from 'configs/eslint';
 
 export default [
-  eslintConfig,
+  ...eslintConfig,
   // configuration overrides
 ];
 ```

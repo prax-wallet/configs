@@ -81,7 +81,7 @@ export default tseslint.config(
       'react/jsx-no-useless-fragment': [
         'error',
         {
-          allowexpressions: true,
+          allowExpressions: true,
         },
       ],
       'react-refresh/only-export-components': 'off',
